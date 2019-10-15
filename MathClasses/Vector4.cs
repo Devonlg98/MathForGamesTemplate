@@ -12,10 +12,10 @@ namespace MathClasses
 
         public Vector4(float xValue, float yValue, float zValue, float wValue)
         {
-            x = 0;
-            y = 0;
-            z = 0;
-            w = 0;
+            x = xValue;
+            y = yValue;
+            z = zValue;
+            w = wValue;
         }
         public static Vector4 operator +(Vector4 lhs, Vector4 rhs)
         {
@@ -31,7 +31,24 @@ namespace MathClasses
             return new Vector4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);        }
         public static Vector4 operator *(float lhs, Vector4 rhs)
         {
-            return (rhs * lhs);        }
+            return (rhs * lhs);        }
+        public static Vector4 operator *(Vector4 lhs, Vector4 rhs)
+        {
+            return new Vector4(
+                lhs.x * rhs.x,
+                lhs.y * rhs.y,
+                lhs.z * rhs.z,
+                lhs.w * rhs.w);
+        }
+        public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
+        {
+            return new Vector4(
+                (lhs.m1 * rhs.x) + (lhs.m5 * rhs.y) + (lhs.m9 * rhs.z) + (lhs.m13 * rhs.w),
+                (lhs.m2 * rhs.x) + (lhs.m6 * rhs.y) + (lhs.m10 * rhs.z) + (lhs.m14 * rhs.w),
+                (lhs.m3 * rhs.x) + (lhs.m7 * rhs.y) + (lhs.m11 * rhs.z) + (lhs.m15 * rhs.w),
+                (lhs.m4 * rhs.x) + (lhs.m8 * rhs.y) + (lhs.m12 * rhs.z) + (lhs.m16 * rhs.w));
+        }
+
         public float Distance(Vector4 other)
         {
             float diffX = x - other.x;

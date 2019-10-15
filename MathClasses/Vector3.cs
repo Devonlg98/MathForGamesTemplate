@@ -12,9 +12,9 @@ namespace MathClasses
 
         public Vector3(float xValue, float yValue, float zValue)
         {
-            x = 0;
-            y = 0;
-            z = 0;
+            x = xValue;
+            y = yValue;
+            z = zValue;
         }
         public static Vector3 operator +(Vector3 lhs, Vector3 rhs)
         {
@@ -29,6 +29,20 @@ namespace MathClasses
         public static Vector3 operator *(float lhs, Vector3 rhs)
         {
             return (rhs * lhs);        }
+        public static Vector3 operator *(Vector3 lhs, Vector3 rhs)
+        {
+            return new Vector3(
+                lhs.x * rhs.x,
+                lhs.y * rhs.y,
+                lhs.z * rhs.z);
+        }
+        public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
+        {
+            return new Vector3(
+                (lhs.m1 * rhs.x) + (lhs.m4 * rhs.y) + (lhs.m7 * rhs.z),
+                (lhs.m2 * rhs.x) + (lhs.m5 * rhs.y) + (lhs.m8 * rhs.z),
+                (lhs.m3 * rhs.x) + (lhs.m6 * rhs.y) + (lhs.m9 * rhs.z));
+        }
 
         public float Distance(Vector3 other)
         {
