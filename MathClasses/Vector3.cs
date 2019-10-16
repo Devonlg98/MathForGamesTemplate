@@ -71,6 +71,6 @@ namespace MathClasses
             this.x /= m;
             this.y /= m;
             this.z /= m;
-        }
+        }        
     }
 }

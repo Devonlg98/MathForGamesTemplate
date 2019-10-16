@@ -131,5 +131,13 @@ namespace MathClasses
             // combine rotations in a specific order
             Set(z * y * x);
         }
+        public void SetTranslation(float x, float y, float z)
+        {
+            m13 = z; m14 = y; m15 = z; m16 = 1;
+        }        void Translate(float x, float y, float z)
+        {
+            // apply vector offset
+            m13 += z; m14 += y; m15 += z;
+        }
     }
 }
